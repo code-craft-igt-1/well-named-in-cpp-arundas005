@@ -6,9 +6,9 @@ namespace TelCoColorCoder
     #define FORMAT std::setw(18) << std::setfill(' ')
     void PrintColorCodeRefManual()
     {
-        std::cout << "----------|---------------------|----------------------" << std::endl;
-        std::cout << " Code     |      Major Color    |     Minor Color    " << std::endl;
-        std::cout << "----------|---------------------|----------------------" << std::endl;
+        std::cout << "----------|---------------------|------------------------" << std::endl;
+        std::cout << " Code     |      Major Color    |     Minor Color       |" << std::endl;
+        std::cout << "----------|---------------------|------------------------" << std::endl;
         int numberOfCodes = numberOfMajorColors * numberOfMinorColors;
         for (auto colorIndex = 1; colorIndex <= numberOfCodes; ++colorIndex)
         {
@@ -19,10 +19,10 @@ namespace TelCoColorCoder
             {
                 majorColor = std::string("");
             }
-            std::cout << "  " << std::left << FORMAT << colorIndex << FORMAT << majorColor << FORMAT << minorColor << std::endl;
+            std::cout << "  " << std::left << FORMAT << colorIndex << FORMAT << majorColor << FORMAT << minorColor << "|"<<std::endl;
             if(!majorColor.empty())
             {
-                std::cout << "-------------------------------------------------------" << std::endl;
+                std::cout << "---------------------------------------------------------" << std::endl;
             }
         }
     }
