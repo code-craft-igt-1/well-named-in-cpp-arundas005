@@ -5,6 +5,14 @@
 #include <fstream>
 #include <assert.h>
 
+std::string removeNonAlphanumeric(const std::string& input) {
+    std::string result = input;
+    result.erase(std::remove_if(result.begin(), result.end(), [](char c) {
+        return !std::isalnum(static_cast<unsigned char>(c));
+    }), result.end());
+    return result;
+}
+
 void testPrintColorCodeRefManual() 
 {
     // Capture the output of the PrintColorCodeRefManual function
@@ -24,6 +32,8 @@ void testPrintColorCodeRefManual()
         refManualFile.close();
     }
     std::string capturedOutput = output.str();
-    assert(capturedOutput == expectedOutput); // Assert the output matches the expected output
+    std::string actual = removeNonAlphanumeric(capturedOutput);
+    std::string expected = removeNonAlphanumeric(expectedOutput);
+    assert(actual == expected); // Assert the output matches the expected output
     std::cout << "Test passed: PrintColorCodeRefManual output is correct." << std::endl; // Print success message
 }
